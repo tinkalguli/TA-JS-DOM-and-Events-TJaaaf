@@ -12,7 +12,7 @@ let allBoxes = document.querySelectorAll(".box");
 boxes.addEventListener("mousemove", function () {
     [...allBoxes].forEach(e => {
         e.style.backgroundColor = `#${parseInt(Math.random() * 1000)}`;
-        e.innerText = `${parseInt(Math.random() * 1000)}`;
+        e.innerText = `${parseInt(Math.random() * 500)}`;
     });
 });
 
