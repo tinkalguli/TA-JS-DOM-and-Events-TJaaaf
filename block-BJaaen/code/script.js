@@ -29,69 +29,25 @@ function clicked (e) {
     document.querySelector(".user-action").innerText = `${action.toUpperCase()}`;
     document.querySelector(".com-action").innerText = `${actionArray[random].toUpperCase()}`;
 
-    if (e.target.classList.contains("rock")) {
-        if (action == actionArray[random]){
-            result.innerText = "It's a tie.";
-        } else if (actionArray[random] == "lizard" 
-        || actionArray[random] == "scissor") {
-            result.innerText = "You Won!";
-            userWinCount.innerText =  +userWinCount.innerText + 1;
-        } else {
-            result.innerText = "You Lost!";
-            comWinCount.innerText =  +comWinCount.innerText + 1;
-        }
-    }
+    let currentActions = (function () {
+        if (action == "rock") return ["lizard", "scissor"];
+        if (action == "paper") return ["rock", "spock"];
+        if (action == "scissor") return ["lizard", "paper"];
+        if (action == "lizard") return ["spock", "paper"];
+        if (action == "spock") return ["scissor", "rock"];
+    })();
 
-    if (e.target.classList.contains("paper")) {
-        if ("paper" == actionArray[random]){
-            result.innerText = "It's a tie.";
-        } else if (actionArray[random] == "rock" 
-        || actionArray[random] == "spock") {
-            result.innerText = "You Won!";
-            userWinCount.innerText =  +userWinCount.innerText + 1;
-        } else {
-            result.innerText = "You Lost!";
-            comWinCount.innerText =  +comWinCount.innerText + 1;
-        }
-    }
+    console.log(currentActions);
 
-    if (e.target.classList.contains("scissor")) {
-        if ("scissor" == actionArray[random]){
-            result.innerText = "It's a tie.";
-        } else if (actionArray[random] == "paper" 
-        || actionArray[random] == "lizard") {
-            result.innerText = "You Won!";
-            userWinCount.innerText =  +userWinCount.innerText + 1;
-        } else {
-            result.innerText = "You Lost!";
-            comWinCount.innerText =  +comWinCount.innerText + 1;
-        }
-    }
-
-    if (e.target.classList.contains("lizard")) {
-        if ("lizard" == actionArray[random]){
-            result.innerText = "It's a tie.";
-        } else if (actionArray[random] == "paper" 
-        || actionArray[random] == "spock") {
-            result.innerText = "You Won!";
-            userWinCount.innerText =  +userWinCount.innerText + 1;
-        } else {
-            result.innerText = "You Lost!";
-            comWinCount.innerText =  +comWinCount.innerText + 1;
-        }
-    }
-
-    if (e.target.classList.contains("spock")) {
-        if ("spock" == actionArray[random]){
-            result.innerText = "It's a tie.";
-        } else if (actionArray[random] == "scissor" 
-        || actionArray[random] == "rock") {
-            result.innerText = "You Won!";
-            userWinCount.innerText =  +userWinCount.innerText + 1;
-        } else {
-            result.innerText = "You Lost!";
-            comWinCount.innerText =  +comWinCount.innerText + 1;
-        }
+    if (action == actionArray[random]){
+        result.innerText = "It's a tie.";
+    } else if (actionArray[random] == currentActions[0] 
+    || actionArray[random] == currentActions[1]) {
+        result.innerText = "You Won!";
+        userWinCount.innerText =  +userWinCount.innerText + 1;
+    } else {
+        result.innerText = "You Lost!";
+        comWinCount.innerText =  +comWinCount.innerText + 1;
     }
 }
 
