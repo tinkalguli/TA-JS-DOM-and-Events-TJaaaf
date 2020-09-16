@@ -37,9 +37,9 @@ function clicked (e) {
         if (action == "spock") return ["scissor", "rock"];
     })();
 
-    console.log(currentActions);
+    // console.log(currentActions);
 
-    if (action == actionArray[random]){
+    if (action == actionArray[random]) {
         result.innerText = "It's a tie.";
     } else if (actionArray[random] == currentActions[0] 
     || actionArray[random] == currentActions[1]) {
@@ -50,7 +50,6 @@ function clicked (e) {
         comWinCount.innerText =  +comWinCount.innerText + 1;
     }
 }
-
 
 function reset() {
     document.querySelector(".user-action").innerText = ``;
