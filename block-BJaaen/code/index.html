@@ -4,8 +4,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper and Scissor game</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <section class="container">
+      <h1>Rock Paper Scissors Lizard Spock</h1>
+
+      <!-- You -->
+      <div class="player">
+        <h2 class="name">
+          <span>You - </span>
+          <span class="your-win-count"></span>
+          <span class="your-action"></span>
+        </h2>
+        <div class="grid user-btns">
+          <span class="btn-you rock"><i class="fas fa-hand-rock"></i></span>
+          <span class="btn-you paper"><i class="fas fa-hand-paper"></i></span>
+          <span class="btn-you scissor"><i class="fas fa-hand-scissors"></i></span>
+          <span class="btn-you lizard"><i class="fas fa-hand-lizard"></i></span>
+          <span class="btn-you spock"><i class="fas fa-hand-spock"></i></span>
+        </div>
+      </div>
+
+      <!-- Computer -->
+      <div class="player">
+        <h2 class="name">
+          <span>Computer - </span>
+          <span class="com-win-count"></span>
+          <span class="com-action"></span>
+        </h2>
+        <div class="grid">
+          <span class="btn-com rock"><i class="fas fa-hand-rock"></i></span>
+          <span class="btn-com paper"><i class="fas fa-hand-paper"></i></span>
+          <span class="btn-com scissor"><i class="fas fa-hand-scissors"></i></span>
+          <span class="btn-com lizard"><i class="fas fa-hand-lizard"></i></span>
+          <span class="btn-com spock"><i class="fas fa-hand-spock"></i></span>
+        </div>
+      </div>
+
+      <div class="flex">
+        <span class="reset-btn"><i class="fas fa-sync-alt"></i></span>
+        <h2 class="result"></h2>
+      </div>
+
+    </section>
+
     <script src="./script.js"></script>
+    <script src="https://kit.fontawesome.com/bd07b7eea7.js" crossorigin="anonymous"></script>
   </body>
 </html>
