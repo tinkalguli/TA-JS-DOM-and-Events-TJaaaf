@@ -3,7 +3,7 @@ let boxes = document.querySelector(".boxes");
 for (let i = 0; i < 500; i++) {
     let box = document.createElement("div");
     box.classList.add("box");
-    // box.innerText = num;
+    box.innerText = `${parseInt(Math.random() * 500)}`;
     boxes.append(box);
 }
 
