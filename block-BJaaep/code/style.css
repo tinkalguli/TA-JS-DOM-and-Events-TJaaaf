@@ -83,7 +83,7 @@ body {
 
 .box {
   margin: 5px;
-  background-color: #444;
+  background: linear-gradient(to right, rgb(90, 1, 112), rgb(171, 146, 240));
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
