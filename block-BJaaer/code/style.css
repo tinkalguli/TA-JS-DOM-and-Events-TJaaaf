@@ -91,3 +91,25 @@ input[type='text'] {
 .terms {
   display: inline-block;
 }
+
+.closeBtn {
+  text-align: right;
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #535353c9;
+  cursor: pointer;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.7rem;
+}
