@@ -5,6 +5,7 @@ let Boxes = document.querySelectorAll(".boxes");
 }));
 
 function flip(e) {
+    if (e.target.dataset.figure) {
         e.target.style.transform = "rotateY(0deg)";
         e.target.innerText = e.target.dataset.figure;
         
@@ -12,6 +13,7 @@ function flip(e) {
             e.target.style.transform = "rotateY(180deg)";
             e.target.innerText = "";
         }, 5000);
+    }
 }
 
 [...[...Boxes][0].children].forEach(e => e.addEventListener("click", flip));
