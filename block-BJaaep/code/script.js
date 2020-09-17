@@ -14,11 +14,6 @@ function flip(e) {
         }, 5000);
 }
 
-[...[...Boxes][0].children].forEach(e =>
-    e.addEventListener("click", function (event) {
-        flip(event);
-    }));
+[...[...Boxes][0].children].forEach(e => e.addEventListener("click", flip));
 
-[...Boxes][1].addEventListener("click", function (event) {
-        flip(event);
-    })
+[...Boxes][1].addEventListener("click", flip);
