@@ -1,9 +1,8 @@
 let form = document.querySelector(".container");
 
+let modalContainer = document.createElement("section");
+let modal = document.createElement("div");
 let closeBtn = document.createElement("a");
-closeBtn.classList.add("closeBtn");
-closeBtn.innerText = "Close";
-
 let greet = document.createElement("h1");
 let email = document.createElement("h2");
 let love = document.createElement("h2");
@@ -12,23 +11,28 @@ let rating = document.createElement("h2");
 let genre = document.createElement("h2");
 let terms = document.createElement("h2");
 
+modalContainer.classList.add("modal-container");
+modal.classList.add("modal");
+closeBtn.classList.add("closeBtn");
+closeBtn.innerText = "Close";
+
 function submit(event) {
     event.preventDefault();
     
-    form.style = "max-width: 700px";
-    greet.innerText = `Hello ${event.target.text.value}`;
-    email.innerText = `Email: ${event.target.email.value}`;
-    love.innerText = `You Love: ${event.target.love.value}`;
-    color.innerText = `Color: ${event.target.color.value}`;
-    rating.innerText = `Rating: ${event.target.rating.value}`;
-    genre.innerText = `Book Genre: ${event.target.drone.value}`;
+    greet.innerText = `Hello ${form.elements.text.value}`;
+    email.innerText = `Email: ${form.elements.email.value}`;
+    love.innerText = `You Love: ${form.elements.love.value}`;
+    color.innerText = `Color: ${form.elements.color.value}`;
+    rating.innerText = `Rating: ${form.elements.rating.value}`;
+    genre.innerText = `Book Genre: ${form.elements.drone.value}`;
     terms.innerText = event.target.terms.checked ?
      "👉You agree to terms and conditions"
-      : "👉You agree to terms and conditions";
+      : "👉You don't agree to terms and conditions";
     
-    [...form.children].forEach(e => e.remove());
-    form.append(closeBtn, greet, email, love, color, rating, genre, terms)
+    modal.append(closeBtn, greet, email, love, color, rating, genre, terms);
+    modalContainer.append(modal);
+    document.body.append(modalContainer);
 };
 
-form.addEventListener("submit", submit, true);
+form.addEventListener("submit", submit);
 closeBtn.addEventListener("click", () => location.reload());
