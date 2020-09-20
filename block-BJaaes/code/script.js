@@ -9,18 +9,19 @@ function checkError(inputName) {
 
     if (inputName == form.elements.name) return inputName.value.split("").filter(e => !isNaN(e)).length > 0 || userInfo.name == "";
 
-    if (inputName == form.elements.email) return inputName.value.includes("@") || userInfo.email.length < 6;
+    if (inputName == form.elements.email) return !inputName.value.includes("@") || inputName.value.slice(0, inputName.value.indexOf("@")).length < 6;
 
     if (inputName == form.elements.phone) return inputName.value.split("").filter(e => isNaN(e)).length > 0 || userInfo.phone == "";
 
     if (inputName == document.querySelector("#password1")) return (inputName.value.split("").filter(e => { return e.includes("@") || e.includes("$")}).length == 0) 
     || (userInfo.password.split("").filter(e => !isNaN(e)).length == 0);
 
-    if (inputName == document.querySelector("#password2")) return userInfo.passwordCheck !== userInfo.password;
+    if (inputName == document.querySelector("#password2")) return (inputName.value.split("").filter(e => { return e.includes("@") || e.includes("$")}).length == 0) 
+    || (userInfo.password.split("").filter(e => !isNaN(e)).length == 0) && userInfo.passwordCheck !== userInfo.password;
   })();
 
   let errorText = (function () {
-    if (inputName == form.elements.username) return `Username can't be less than 4 characters (replace ${inputName.value} with field name`;
+    if (inputName == form.elements.username) return "Username can't be less than 4 characters";
 
     if (inputName == form.elements.name) return "You can't use number in the name field";
 
@@ -38,9 +39,13 @@ function checkError(inputName) {
       let small = document.createElement("small");
       small.innerText = `${inputName.previousElementSibling.textContent} can not be blank`;
       inputName.parentElement.append(small);
+      inputName.parentElement.classList.add("error");
+      inputName.parentElement.classList.remove("success");
     } 
   } else if (inputName.nextElementSibling) {
     inputName.nextElementSibling.remove();
+    inputName.parentElement.classList.add("success");
+    inputName.parentElement.classList.remove("error");
   }
   
   if (condition) {
@@ -48,11 +53,22 @@ function checkError(inputName) {
         let small = document.createElement("small");
         small.innerText = errorText;
         inputName.parentElement.append(small);
+        inputName.parentElement.classList.add("error");
+        inputName.parentElement.classList.remove("success");
       }
   } else if (inputName.nextElementSibling) {
     inputName.nextElementSibling.remove();
-  }
+    inputName.parentElement.classList.add("success");
+    inputName.parentElement.classList.add("error");
+  } else inputName.parentElement.classList.add("success");
 }
+
+function validSubmission () {
+  let allFormControl = document.querySelectorAll(".form-control");
+  let isValid = [...allFormControl].every(e => e.classList.contains("success"));
+  if (isValid) alert("User added successfully");
+}
+
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -69,6 +85,7 @@ function handleSubmit(event) {
   checkError(form.elements.phone);
   checkError(document.querySelector("#password1"));
   checkError(document.querySelector("#password2"));
+  validSubmission();
 
   // send data to server
   console.dir(userInfo);
