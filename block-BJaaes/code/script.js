@@ -66,7 +66,28 @@ function checkError(inputName) {
 function validSubmission () {
   let allFormControl = document.querySelectorAll(".form-control");
   let isValid = [...allFormControl].every(e => e.classList.contains("success"));
-  if (isValid) alert("User added successfully");
+  if (isValid) {
+    let validHeading = document.createElement("h2");
+    let validBox = document.createElement("div");
+    let validHeadingBox = document.createElement("div");
+    let validButton = document.createElement("button");
+
+    validHeadingBox.append(validHeading, validButton);
+    validBox.append(validHeadingBox);
+    document.body.append(validBox);
+
+    validBox.classList.add("valid-box");
+    validHeadingBox.classList.add("valid-heading-box");
+    validHeading.classList.add("valid-heading");
+    validButton.classList.add("valid-button");
+
+    validHeading.innerText = "User Added Successfully!";
+    validButton.innerText = "Done";
+
+    validButton.addEventListener("click", function() {
+      location.reload();
+    })
+  }
 }
 
 
