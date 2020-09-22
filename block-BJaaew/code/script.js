@@ -1,10 +1,10 @@
 function main() {
     let container = document.querySelector(".container");
-let ul = document.querySelector("ul");
-let search = document.querySelector("#search");
+    let ul = document.querySelector("ul");
+    let search = document.querySelector("#search");
 
-let allPeople = got.houses.map(val => val.people).flat();
-let filteredPeople = [];
+    let allPeople = got.houses.map(val => val.people).flat();
+    let filteredPeople = [];
 
 function createUI(arr) {
     container.innerText = "";
