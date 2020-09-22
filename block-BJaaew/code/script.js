@@ -1,4 +1,5 @@
-let container = document.querySelector(".container");
+function main() {
+    let container = document.querySelector(".container");
 let ul = document.querySelector("ul");
 let search = document.querySelector("#search");
 
@@ -61,3 +62,6 @@ createUI(allPeople);
 
 ul.addEventListener("click", filtered);
 search.addEventListener("input", searchPeople);
+}
+
+main();
