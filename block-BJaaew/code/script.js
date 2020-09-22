@@ -4,7 +4,7 @@ function main() {
     let search = document.querySelector("#search");
 
     let allPeople = got.houses.map(val => val.people).flat();
-    let filteredPeople = [];
+    let filteredPeople = [...allPeople];
 
 function createUI(arr) {
     container.innerText = "";
@@ -41,7 +41,8 @@ function filtered(event) {
     event.target.classList.add("active");
     
     if (event.target.innerText == "All") {
-        createUI(allPeople);
+        filteredPeople = allPeople;
+        createUI(filteredPeople);
     } else {
         got.houses.forEach(e => {
         if(e.name == `${event.target.innerText}`) {
