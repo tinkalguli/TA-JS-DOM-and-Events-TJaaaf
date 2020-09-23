@@ -42,9 +42,9 @@ function filter(event) {
         let filtered = todos.filter(e => e.isDone == true);
         createUI(filtered);
     } else if (event.target.innerText == "Clear Completed") {
-        todos = [];
         todos = todos.filter(e => e.isDone == false);
         createUI(todos);
+        localStorage.setItem("todos", JSON.stringify(todos));
     }
 }
 
@@ -73,34 +73,34 @@ function createUI(arr) {
         span.addEventListener("click", deleteMovie);
         checkbox.addEventListener("change", isComplete);
     })
-}
+} 
 
 function createButtons() {
-    let buttons = document.createElement("div");
-    buttons.classList.add("flex-between", "button-box");
-    let filoterButtons = document.createElement("div");
-    filoterButtons.classList.add("flex-between");
-    let active = document.createElement("button");
-    active.innerText = "Active";
-    let completed = document.createElement("button");
-    completed.innerText = "Completed";
-    let all = document.createElement("button");
-    all.innerText = "All";
-    let clearCompleted = document.createElement("button");
-    clearCompleted.innerText = "Clear Completed";
+    if (root.innerText !== "") {
+        let buttons = document.createElement("div");
+        buttons.classList.add("flex-between", "button-box");
+        let filterButtons = document.createElement("div");
+        filterButtons.classList.add("flex-between");
+        let active = document.createElement("button");
+        active.innerText = "Active";
+        let completed = document.createElement("button");
+        completed.innerText = "Completed";
+        let all = document.createElement("button");
+        all.innerText = "All";
+        let clearCompleted = document.createElement("button");
+        clearCompleted.innerText = "Clear Completed";
 
-    filoterButtons.append(active, completed, all);
-    buttons.append(filoterButtons, clearCompleted);
-    container.append(buttons);
+        filterButtons.append(active, completed, all);
+        buttons.append(filterButtons, clearCompleted);
+        container.append(buttons);
 
-    filoterButtons.addEventListener("click", filter);
+        buttons.addEventListener("click", filter);
+    }
 }
+
 
 createUI(todos);
-
-if (root.innerText !== "") {
-    createButtons();
-}
+createButtons();
 
 localStorage.setItem("todos", JSON.stringify(todos));
 
