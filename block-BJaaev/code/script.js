@@ -76,7 +76,7 @@ function createUI(arr) {
 } 
 
 function createButtons() {
-    if (root.innerText !== "") {
+    // if (root.innerText !== "") {
         let buttons = document.createElement("div");
         buttons.classList.add("flex-between", "button-box");
         let filterButtons = document.createElement("div");
@@ -95,7 +95,7 @@ function createButtons() {
         container.append(buttons);
 
         buttons.addEventListener("click", filter);
-    }
+    // }
 }
 
 
