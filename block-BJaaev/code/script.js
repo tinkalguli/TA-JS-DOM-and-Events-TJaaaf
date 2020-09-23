@@ -1,4 +1,5 @@
-let inputBox = document.querySelector("#input-box");
+function main() {
+    let inputBox = document.querySelector("#input-box");
 let root = document.querySelector("ul");
 let container = document.querySelector(".container");
 
@@ -46,6 +47,7 @@ function filter(event) {
         createUI(todos);
         localStorage.setItem("todos", JSON.stringify(todos));
     }
+    // createButtons();
 }
 
 function createUI(arr) {
@@ -72,11 +74,15 @@ function createUI(arr) {
 
         span.addEventListener("click", deleteMovie);
         checkbox.addEventListener("change", isComplete);
-    })
+    });
+    if (document.querySelector(".button-box")) {
+        document.querySelector(".button-box").remove();
+    }
+    createButtons();
 } 
 
 function createButtons() {
-    // if (root.innerText !== "") {
+    if (todos.length > 0) {
         let buttons = document.createElement("div");
         buttons.classList.add("flex-between", "button-box");
         let filterButtons = document.createElement("div");
@@ -95,13 +101,12 @@ function createButtons() {
         container.append(buttons);
 
         buttons.addEventListener("click", filter);
-    // }
+    }
 }
 
-
 createUI(todos);
-createButtons();
 
 localStorage.setItem("todos", JSON.stringify(todos));
-
 inputBox.addEventListener("keyup", handler);
+}
+main();

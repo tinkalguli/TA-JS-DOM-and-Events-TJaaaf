@@ -123,6 +123,7 @@ p {
 .checkbox:checked ~ p {
     text-decoration-line: line-through;
     text-decoration-color: #26c240;
+    opacity: 0.7;
     color: #f0f8ff8c;
 }
 
