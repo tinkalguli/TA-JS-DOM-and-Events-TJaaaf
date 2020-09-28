@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda+One&display=swap');
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Merienda One', cursive;
+    background: #e7e7e71c;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    grid-gap: 2rem;
+}
+
+h1 {
+    text-align: center;
+    margin: 2.5rem 0;
+    font-size: 3rem;
+    color: #333333;
+}
+
+.container {
+    width: 42rem;
+    padding: 2rem;
+    background: linear-gradient(45deg, #3b3b3ba4 50%, #b45656a4 50%);
+    border-radius: 5px;
+    margin-bottom: 3rem;
+}
+
+.box {
+    height: 8rem;
+    background: #2b2a2a;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -1px -1px 0 0 #e0e0e0;
+}
+
+
+.box i {
+    font-size: 3rem;
+    background: -webkit-linear-gradient(right, #eee, #636363);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #ffffff1a);
+    opacity: 0;
+    transform: rotateY(180deg);
+}
+
+.box-flip {
+    transform: rotateY(180deg);
+    background: #06354b;
+}
+
+.box-flip i {
+    opacity: 1;
+}
+
+.wrapper {
+    flex-direction: column;
+    align-items: center;
+}
+
+.list-item {
+    margin: 0 2rem;
+    list-style: none;
+}
+
+.info {
+    margin-bottom: 1rem;
+}
