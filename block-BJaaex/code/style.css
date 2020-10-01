@@ -95,6 +95,10 @@ h1 {
     margin-right: 0.3rem;
 }
 
+.time {
+    display: inline-block;
+}
+
 .time:first-child {
     margin-right: 0.5rem;
 }
@@ -109,6 +113,10 @@ h1 {
 
 .fa-star {
     color: #d4940a;
+}
+
+.reset i {
+    cursor: pointer;
 }
 
 .disabled {
@@ -142,13 +150,31 @@ h1 {
     color: #ffffff;
     max-width: 40rem;
     height: auto;
+    border-radius: 0.4rem;
+    box-shadow: inset -2px -2px 0 0 #cccccc;
 }
 
 .modal h1 {
     font-size: 2rem;
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.modal .btn-cancel {
+    text-align: right;
+    margin: 0 0 0 100%;
 }
 
 .modal p {
     font-size: 1.5rem;
 }
 
+.modal a {
+    padding: 0.7rem 1.2rem;
+    background: #ffffff;
+    border-radius: 0.3rem;
+    color: #222222;
+    margin-top: 2rem;
+    display: inline-block;
+}
