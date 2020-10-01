@@ -80,6 +80,7 @@ function match() {
         selectedElement = [];
         showMoves();
     }
+    completed();
 }
 
 function showMoves() {
@@ -121,31 +122,40 @@ function modalUI() {
     let modal = document.createElement("div");
     modalContainer.append(modal);
     modal.classList.add("modal");
-    modal.innerText = "Congratulation🎁";
-    let div = document.createElement("div");
-    div.classList.add("flex");
-    let h1 = document.createElement("h1");
     let i = document.createElement("i");
-    i.classList.add("dcds");
-    div.append(h1, i);
-    modal.append(div);
+    i.innerText = "❌";
+    i.classList.add("btn-cancel");
+    let h1 = document.createElement("h1");
+    h1.innerText = "Congratulation🎁";
+    modal.append(i, h1);
     let textArr = [
         "You won this game🎉",
-        `You made ${document.querySelector(".moves").innerText} moves`,
-        `in ${document.querySelector(".times").innerText}`,
-        `Ratting: ${document.querySelector(".stars").innerText}`
+        `You made ${document.querySelector(".moves").innerHTML} moves`,
+        `in ${document.querySelector(".times").innerHTML}`,
+        `Ratting: ${document.querySelector(".stars").innerHTML}`
     ]
     for(let i = 0; i < 4; i++) {
         let p = document.createElement("p");
-        p.innerText = `${textArr[i]}`;
+        p.innerHTML = `${textArr[i]}`;
         modal.append(p);
     }
-    [...modal.querySelectorAll("br")].forEach(e => e.remove());
-    let button = document.createElement("button");
+    let button = document.createElement("a");
+    button.innerText = "Play again 🎃";
     modal.append(button);
     document.body.append(modalContainer);
+
+    i.addEventListener("click", () => {
+        modalContainer.style.display = "none";
+        location.reload();
+    });
+    button.addEventListener("click", () => {
+        location.reload();
+    });
 }
 
-// modalUI();
+function completed() {
+    let allBoxes = [...document.querySelectorAll(".box")];
+    if(allBoxes.every(e => e.classList.contains("matched"))) modalUI();
+}
 
 document.querySelector(".reset").addEventListener("click", reset);
