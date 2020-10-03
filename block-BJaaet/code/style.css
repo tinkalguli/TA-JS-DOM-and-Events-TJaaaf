@@ -1,0 +1,49 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    padding: 2rem;
+    width: 30rem;
+    display: block;
+    margin: 4rem 0;
+    background: #d6beec;
+    border-radius: 5px;
+    box-shadow: -5px 5px #d15278, -10px 10px #d3728f, -15px 15px #095ac8;
+}
+
+input {
+    width: 100%;
+    padding: 1rem 0.5rem;
+    border: 1px solid #222222;
+    outline: 0;
+    font-size: 1.2rem;
+}
+
+div {
+    list-style: none;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgb(119, 119, 119);
+    background: #fff;
+}
+
+span {
+    color: #72112e;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}

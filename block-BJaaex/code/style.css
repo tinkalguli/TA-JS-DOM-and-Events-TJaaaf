@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda+One&display=swap');
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Merienda One', cursive;
+    background: #e7e7e71c;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    grid-gap: 2rem;
+}
+
+h1 {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 3rem;
+    color: #333333;
+    text-decoration-line: underline;
+}
+
+.container {
+    width: 42rem;
+    padding: 2rem;
+    background: linear-gradient(45deg, #3b3b3ba4 50%, #b45656a4 50%);
+    border-radius: 5px;
+    margin-bottom: 3rem;
+}
+
+.box {
+    height: 8rem;
+    background: #2b2a2a;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -1px -1px 0 0 #e0e0e0;
+    transition: transform 0.4s;
+    box-shadow: 2px 2px 10px #3b3b3b,
+     -2px -2px 10px #3b3b3b,
+     inset -1px -1px 0 0 #a5a5a5;
+}
+
+
+.box i {
+    font-size: 3rem;
+    background: -webkit-linear-gradient(right, #eee, #636363);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #ffffff1a);
+    opacity: 0;
+    transform: rotateY(180deg);
+}
+
+.box-flip {
+    transform: rotateY(180deg);
+    background: #06354b;
+    transition: transform 0.4s;
+}
+
+.box-flip i {
+    opacity: 1;
+}
+
+.wrapper {
+    flex-direction: column;
+    align-items: center;
+}
+
+.list-item {
+    margin: 0 1.7rem;
+    list-style: none;
+    font-size: 1.5rem;
+}
+
+.info {
+    margin-bottom: 1rem;
+}
+
+.moves {
+    margin-right: 0.3rem;
+}
+
+.time {
+    display: inline-block;
+}
+
+.time:first-child {
+    margin-right: 0.5rem;
+}
+
+.time span {
+    margin-right: 0.3rem;
+}
+
+.fa-star:nth-child(2) {
+    margin: 0 0.2rem;
+}
+
+.fa-star {
+    color: #d4940a;
+}
+
+.reset i {
+    cursor: pointer;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.matched {
+    background: #4a034d;
+}
+
+.unmatched {
+    background: #680303;
+}
+
+.modal-container {
+    width: 100vw;
+    height: 100vh;
+    /* background: #ffffff1a; */
+    background: #be1616dc;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.modal {
+    text-align: center;
+    padding: 2.5rem 5rem;
+    background: #383838;
+    color: #ffffff;
+    max-width: 40rem;
+    height: auto;
+    border-radius: 0.4rem;
+    box-shadow: inset -2px -2px 0 0 #cccccc;
+}
+
+.modal h1 {
+    font-size: 2rem;
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.modal .btn-cancel {
+    text-align: right;
+    margin: 0 0 0 100%;
+}
+
+.modal p {
+    font-size: 1.5rem;
+}
+
+.modal a {
+    padding: 0.7rem 1.2rem;
+    background: #ffffff;
+    border-radius: 0.3rem;
+    color: #222222;
+    margin-top: 2rem;
+    display: inline-block;
+}

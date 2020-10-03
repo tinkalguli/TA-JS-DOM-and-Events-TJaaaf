@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Game</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <h1>
+    Memory Game
+  </h1>
+  <section class="wrapper flex">
+    <ul class="info flex">
+      <li class="list-item stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </li>
+      <li class="list-item"><span class="moves">0</span>moves</li>
+      <ul class="list-item flex times">
+        <li class="time"><span class="minute">0</span>mins</li>
+        <li class="time"><span class="second">0</span>secs</li>
+      </ul>
+      <li class="list-item reset"><i class="fa fa-refresh" aria-hidden="true"></i></li>
+    </ul>
+    <div class="container grid">
+    </div>
+  </section>
+
+  <script src="https://kit.fontawesome.com/bd07b7eea7.js" crossorigin="anonymous"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
