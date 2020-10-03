@@ -91,10 +91,11 @@ function showMoves() {
     stars(moves);
 }
 
+let intervalId;
 function time() {
     let second = -1;
     let minute = 0;
-    setInterval(() => {
+    intervalId = setInterval(() => {
     second = second + 1;
     finalSecond = parseInt((second + 1) % 60);
     minute = Math.trunc(second / 60);
@@ -109,10 +110,16 @@ function stars(moves) {
 }
 
 function reset() {
+    selectedElement = [];
+    counter = 0;
+    container.innerText = "";
+    createUI();
+    createUI();
     [...container.querySelectorAll(".box")].forEach(e =>e.classList.remove("disabled", "box-flip", "matched"));
     document.querySelector(".moves").innerText = "0";
-    // document.querySelector(".minute").innerText = "0";
-    // document.querySelector(".second").innerText = "0";
+    document.querySelector(".minute").innerText = "0";
+    document.querySelector(".second").innerText = "0";
+    clearInterval(intervalId);
     [...document.querySelector(".stars").children].forEach(e => e.style.display = "inline-block");
 }
 
@@ -146,16 +153,19 @@ function modalUI() {
 
     i.addEventListener("click", () => {
         modalContainer.style.display = "none";
-        location.reload();
     });
     button.addEventListener("click", () => {
-        location.reload();
+        reset();
+        modalContainer.style.display = "none";
     });
 }
 
 function completed() {
     let allBoxes = [...document.querySelectorAll(".box")];
-    if(allBoxes.every(e => e.classList.contains("matched"))) modalUI();
+    if(allBoxes.every(e => e.classList.contains("matched"))) {
+        modalUI();
+        clearInterval(intervalId);
+    }
 }
 
 document.querySelector(".reset").addEventListener("click", reset);
