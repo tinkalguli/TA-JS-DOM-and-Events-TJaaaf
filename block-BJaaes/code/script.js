@@ -7,85 +7,92 @@ let phone = form.elements.phone;
 let password = document.querySelector("#password1");
 let passwordCheck = document.querySelector("#password2");
 
-function checkError(inputName) {
-  let condition = (function() {
-    if (inputName == username) return inputName.value.length < 4;
+function checkEmpty(inputName) {
+  inputName.nextElementSibling.innerText = "";
+  inputName.nextElementSibling.innerText = `${inputName.previousElementSibling.textContent} can not be blank`;
+  inputName.classList.remove("success");
+  inputName.classList.add("error");
+}
 
-    if (inputName == name) return inputName.value.split("").some(e => Number(e));
+function checkError(inputName, errorText) {
+  inputName.nextElementSibling.innerText = "";
+  inputName.nextElementSibling.innerText = errorText;
+  inputName.classList.remove("success");
+  inputName.classList.add("error");
+}
 
-    if (inputName == email) return inputName.value.slice(0, inputName.value.indexOf("@")).length < 6;
+function success(inputName) {
+  inputName.nextElementSibling.innerText = "";
+  inputName.classList.remove("error");
+  inputName.classList.add("success");
+}
 
-    if (inputName == phone) return !inputName.value.split("").every(e => Number(e)) || inputName.value.length < 7;
-
-    if (inputName == password) return (!inputName.value.split("").some(e => e == "@" || e == "$"))
-    || (!inputName.value.split("").some(e => Number(e)));
-
-    if (inputName == passwordCheck) return passwordCheck.value !== password.value;
-  })();  
-
-  // (inputName.value.split("").some(e => e == "@" || e == "$")) 
-  //   || (inputName.value.split("").some(e => Number(e))) && 
-
-  let errorText = (function () {
-    if (inputName == username) return "Username can't be less than 4 characters";
-
-    if (inputName == name) return "You can't use number in the name field";
-
-    if (inputName == email) return "Not a valid email";
-
-    if (inputName == phone) return "Phone number can only contain numbers";
-
-    if (inputName == password) return "Password must contain at least a symbol and a number";
-
-    if (inputName == passwordCheck) return "Password not match";
-  })();
-
-  // if (inputName.value == "") {
-  //   if (inputName.nextElementSibling == null) {
-  //     let small = document.createElement("small");
-  //     small.innerText = `${inputName.previousElementSibling.textContent} can not be blank`;
-  //     inputName.parentElement.append(small);
-  //     inputName.parentElement.classList.add("error");
-  //     inputName.parentElement.classList.remove("success");
-  //   } 
-  // } else if (inputName.nextElementSibling) {
-  //   inputName.nextElementSibling.remove();
-  //   inputName.parentElement.classList.add("success");
-  //   inputName.parentElement.classList.remove("error");
-  // }
+function result() {
+  // Username 
   
-  // if (condition) {
-  //     if (inputName.nextElementSibling == null) {
-  //       let small = document.createElement("small");
-  //       small.innerText = errorText;
-  //       inputName.parentElement.append(small);
-  //       inputName.parentElement.classList.add("error");
-  //       inputName.parentElement.classList.remove("success");
-  //     }
-  // } else if (inputName.nextElementSibling) {
-  //   inputName.nextElementSibling.remove();
-  //   inputName.parentElement.classList.add("success");
-  //   inputName.parentElement.classList.add("error");
-  // } else inputName.parentElement.classList.add("success");
-
-  if (inputName.value == "") {
-    console.log("blank");
-    inputName.nextElementSibling.innerText = "";
-    inputName.nextElementSibling.innerText = `${inputName.previousElementSibling.textContent} can not be blank`;
-    inputName.classList.remove("success");
-    inputName.classList.add("error");
-  } else if (condition) {
-    console.log("error");
-    inputName.nextElementSibling.innerText = "";
-    inputName.nextElementSibling.innerText = errorText;
-    inputName.classList.remove("success");
-    inputName.classList.add("error");
+  if (username.value == "") {
+    checkEmpty(username);
+  } else if (username.value.length < 4) {
+    checkError(username, "Username can't be less than 4 characters");
   } else {
-    console.log("success")
-    inputName.nextElementSibling.innerText = "";
-    inputName.classList.remove("error");
-    inputName.classList.add("success");
+    success(username);
   }
+
+  // Name
+
+  if (name.value == "") {
+    checkEmpty(name);
+  } else if (name.value.split("").some(e => Number(e))) {
+    checkError(name, "You can't use number in the name field");
+  } else {
+    success(name);
+  }
+
+  // Email
+
+  if (email.value == "") {
+    checkEmpty(email);
+  } else if (!email.value.split("").some(e => e == "@")) {
+    checkError(email, "Not a valid email ('@' is missing)");
+  } else if (email.value.slice(0, email.value.indexOf("@")).length < 6) {
+    checkError(email, "Email can't be less than 6")
+  } else {
+    success(email);
+  }
+
+  // Phone
+
+  if (phone.value == "") {
+    checkEmpty(phone);
+  } else if (!phone.value.split("").every(e => Number(e))) {
+    checkError(phone, "Phone number can only contain numbers");
+  } else if (phone.value.length < 7) {
+    checkError(phone, "Phone number can't be less than 7")
+  } else {
+    success(phone);
+  }
+
+  //Password
+
+  if (password.value == "") {
+    checkEmpty(password);
+  } else if (!password.value.split("").some(e => e == "@" || e == "$")
+        || !password.value.split("").some(e => Number(e))) {
+    checkError(password, "Password must contain at least a symbol and a number");
+  } else {
+    success(password);
+  }
+
+  // PasswordCheck
+
+  if (passwordCheck.value == "") {
+    checkEmpty(passwordCheck);
+  } else if (passwordCheck.value !== password.value) {
+    checkError(passwordCheck, "Password not match");
+  } else {
+    success(passwordCheck);
+  }
+
 }
 
 function validSubmission() {
@@ -117,13 +124,7 @@ function validSubmission() {
 
 function handleSubmit(event) {
   event.preventDefault();
-
-  checkError(username);
-  checkError(name);
-  checkError(email);
-  checkError(phone);
-  checkError(password);
-  checkError(passwordCheck);
+  result();
   validSubmission();
 }
 
