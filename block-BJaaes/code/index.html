@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Handeling Forms 👇</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Create Account</h1>
+      </header>
+      <form>
+        <div class="form-control">
+          <label for="text">Username</label>
+          <input
+           type="text" 
+           name="username" 
+           placeholder="arya" 
+           />
+           <small class="small"></small>
+        </div>
+        <div class="form-control">
+          <label for="text">Name</label>
+          <input 
+           type="text" 
+           name="name" 
+           placeholder="Arya Stark" 
+          />
+          <small></small>
+        </div>
+        <div class="form-control">
+          <label for="text">Email</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="arya@stark.com"
+          />
+          <small></small>
+        </div>
+        <div class="form-control">
+          <label for="text">Phone Number</label>
+          <input
+            id="phone"
+            type="tel"
+            name="phone"
+            placeholder="Enter your number"
+          />
+          <small></small>
+        </div>
+        <div class="form-control">
+          <label for="text">Password</label>
+          <input
+            id="password1"
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+          />
+          <small></small>
+        </div>
+        <div class="form-control">
+          <label for="text">Confirm Password</label>
+          <input
+            id="password2"
+            type="password"
+            name="password2"
+            placeholder="Confirm Password"
+          />
+          <small></small>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
