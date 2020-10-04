@@ -102,16 +102,18 @@ label {
   padding-bottom: 5px;
 }
 
-.form-control input:focus {
-  outline: 0;
-  border-color: #777;
+input {
+  border-color: #bdbdbd;
 }
 
-.form-control.success input {
-  border-color: #79d4a1;
-  position: relative;
+.form-control input:focus {
+  outline: 0;
 }
-.form-control.success {
+
+.form-control .success {
+  border-color: #79d4a1;
+}
+/* .form-control.success {
   position: relative;
 }
 .form-control.success::before {
@@ -123,14 +125,14 @@ label {
   transform: translateY(-50%);
   z-index: 99;
   font-size: 0.75rem;
+} */
+.form-control .error {
+  border: 2px dashed #ed755f;
 }
-.form-control.error input {
-  border-color: #ed755f;
-}
-.form-control.error {
+/* .form-control.error {
   position: relative;
-}
-.form-control.error::before {
+} */
+/* .form-control.error::before {
   content: '❌';
   display: inline-block;
   position: absolute;
@@ -139,7 +141,7 @@ label {
   transform: translateY(-50%);
   z-index: 99;
   font-size: 0.75rem;
-}
+} */
 
 small {
   color: #ed755f;
